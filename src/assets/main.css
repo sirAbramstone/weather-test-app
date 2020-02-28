@@ -1,0 +1,7 @@
+:root {
+    --b-font-size: 16px;
+}
+
+html {
+    font-size: var(--b-font-size);
+}
