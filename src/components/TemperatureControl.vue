@@ -5,9 +5,10 @@
 </template>
 
 <script>
+import { defineComponent } from '@vue/composition-api';
 import ToggleSwitch from 'vuejs-toggle-switch';
 
-export default {
+export default defineComponent({
   name: 'TemperatureControl',
   components: {
     ToggleSwitch,
@@ -47,7 +48,7 @@ export default {
 
     return { options };
   },
-};
+});
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
   <div class="city-widget">
-    <h1 class="city-widget__city">Омск</h1>
+    <h2 class="city-widget__city">Омск</h2>
     <div class="city-widget__controls">
       <base-button>Сменить город</base-button>
       <base-button>Мое местоположение</base-button>

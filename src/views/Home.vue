@@ -1,10 +1,13 @@
 <template>
   <main class="home">
     <div class="container">
-      <div class="wrapper-controls">
+      <section class="wrapper-controls">
         <city-widget></city-widget>
         <temperature-control class="mt-8"></temperature-control>
-      </div>
+      </section>
+      <section class="wrapper-weather">
+        <weather-display></weather-display>
+      </section>
     </div>
   </main>
 </template>
@@ -13,12 +16,14 @@
 import { defineComponent } from '@vue/composition-api';
 import CityWidget from '@/components/CityWidget.vue';
 import TemperatureControl from '@/components/TemperatureControl.vue';
+import WeatherDisplay from '@/components/WeatherDisplay.vue';
 
 export default defineComponent({
   name: 'Home',
   components: {
     CityWidget,
     TemperatureControl,
+    WeatherDisplay,
   },
 });
 </script>
@@ -30,9 +35,13 @@ export default defineComponent({
   }
 
   .wrapper-controls {
-    margin-left: 28px;
+    padding-left: 28px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+  }
+
+  .wrapper-weather {
+    padding: 188px 0 216px;
   }
 </style>
