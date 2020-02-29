@@ -9,8 +9,8 @@ html {
 }
 
 body {
-    height: 100vh;
     font-size: 1rem;
+    background-color: var(--b-bg-color);
 }
 
 .container {

@@ -51,6 +51,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-
+<style lang="scss">
+  .temperature-control {
+    margin-right: -28px;
+  }
 </style>

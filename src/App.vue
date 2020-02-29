@@ -20,7 +20,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--b-color);
-  background-color: var(--b-bg-color);
   height: 100%;
 }
 </style>

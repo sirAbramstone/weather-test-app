@@ -13,7 +13,8 @@ export default {
 
 <style lang="scss">
   .button {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     padding: 0;
     border: none;
     outline: none;
@@ -31,6 +32,11 @@ export default {
     &:focus {
       opacity: 1;
       transition: opacity .3s;
+    }
+
+    & .icon {
+      display: inline;
+      margin-right: 4px;
     }
   }
 </style>
