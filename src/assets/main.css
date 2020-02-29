@@ -1,7 +1,44 @@
 :root {
     --b-font-size: 18px;
+    --b-bg-color: #498CEC;
+    --b-color: #FFFFFF
 }
 
 html {
     font-size: var(--b-font-size);
+}
+
+body {
+    height: 100vh;
+    font-size: 1rem;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1920px;
+}
+
+@media (min-width: 1280px) and (max-width: 1919px){
+    .container {
+        max-width: 1160px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px){
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 767px){
+    .container {
+        max-width: 640px;
+    }
 }
