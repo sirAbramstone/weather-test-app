@@ -1,10 +1,13 @@
 import Vue from 'vue';
+import VueCompositionApi from '@vue/composition-api';
 import App from './App.vue';
 import store from './store';
 
 // Styles assets
 import './assets/main.css';
 import '../node_modules/modern-css-reset/dist/reset.min.css';
+
+Vue.use(VueCompositionApi);
 
 Vue.config.productionTip = false;
 
