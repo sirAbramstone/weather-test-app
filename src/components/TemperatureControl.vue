@@ -5,16 +5,15 @@
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api';
 import ToggleSwitch from 'vuejs-toggle-switch';
 
-export default defineComponent({
+export default {
   name: 'TemperatureControl',
   components: {
     ToggleSwitch,
   },
-  setup() {
-    const options = {
+  data: () => ({
+    options: {
       layout: {
         color: 'rgba(255, 255, 255, 0.4)',
         backgroundColor: 'transparent',
@@ -44,11 +43,9 @@ export default defineComponent({
           },
         ],
       },
-    };
-
-    return { options };
-  },
-});
+    },
+  }),
+};
 </script>
 
 <style lang="scss">

@@ -16,13 +16,12 @@
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api';
 import CityWidget from '@/components/CityWidget.vue';
 import TemperatureControl from '@/components/TemperatureControl.vue';
 import WeatherDisplay from '@/components/WeatherDisplay.vue';
 import WeatherDetails from '@/components/WeatherDetails.vue';
 
-export default defineComponent({
+export default {
   name: 'Home',
   components: {
     CityWidget,
@@ -30,7 +29,7 @@ export default defineComponent({
     WeatherDisplay,
     WeatherDetails,
   },
-});
+};
 </script>
 
 <style lang="scss">

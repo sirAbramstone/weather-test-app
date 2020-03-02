@@ -19,15 +19,14 @@
 </template>
 
 <script>
-import { defineComponent } from '@vue/composition-api';
 import BaseButton from '@/components/BaseButton.vue';
 
-export default defineComponent({
+export default {
   name: 'CityWidget',
   components: {
     BaseButton,
   },
-});
+};
 </script>
 
 <style lang="scss">
