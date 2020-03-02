@@ -2,7 +2,7 @@
   <div class="weather-display">
     <h1 class="weather-display__temp">
       <span>19</span>
-      <span class="degree">o</span>
+      <span class="degree">°</span>
     </h1>
     <p class="weather-display__desc">Преимущественно солнечно</p>
   </div>
