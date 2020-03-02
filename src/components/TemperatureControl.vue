@@ -1,5 +1,6 @@
 <template>
   <div class="temperature-control">
+    <span class="degree">°</span>
     <toggle-switch
       :options="options"
       @change="$emit('update-units', $event.value)"
@@ -54,5 +55,14 @@ export default {
 <style lang="scss">
   .temperature-control {
     margin-right: -28px;
+    display: flex;
+
+    & .degree {
+      margin-right: 12px;
+      display: inline-block;
+      line-height: 36px;
+      font-size: 1em;
+      color: rgba(255, 255, 255, 0.4);
+    }
   }
 </style>

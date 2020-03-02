@@ -36,7 +36,7 @@ export default {
     units: 'metric',
   }),
   computed: {
-    ...mapState({ weather: (state) => state.weather }),
+    ...mapState({ weather: (state) => state.weatherData }),
   },
   watch: {
     city() {
