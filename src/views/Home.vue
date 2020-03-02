@@ -2,7 +2,7 @@
   <main class="home">
     <div class="container">
       <section class="wrapper-controls">
-        <city-widget></city-widget>
+        <city-widget :city="city" @search-city="searchCity"></city-widget>
         <temperature-control class="mt-8"></temperature-control>
       </section>
       <section class="wrapper-display">
@@ -31,17 +31,33 @@ export default {
     WeatherDisplay,
     WeatherDetails,
   },
+  data: () => ({
+    city: 'Омск',
+    units: 'metric',
+  }),
   computed: {
     ...mapState({ weather: (state) => state.weather }),
   },
-  methods: {
-    ...mapActions(['fetchWeatherData']),
+  watch: {
+    city() {
+      this.loadData();
+    },
   },
   beforeMount() {
-    this.fetchWeatherData({
-      city: 'London',
-      units: 'metric',
-    });
+    this.loadData();
+  },
+  methods: {
+    ...mapActions(['fetchWeatherData']),
+
+    searchCity(city) {
+      this.city = city;
+    },
+    loadData() {
+      this.fetchWeatherData({
+        city: this.city,
+        units: this.units,
+      });
+    },
   },
 };
 </script>
