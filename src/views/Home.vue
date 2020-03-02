@@ -3,7 +3,7 @@
     <div class="container">
       <section class="wrapper-controls">
         <city-widget :city="city" @search-city="searchCity"></city-widget>
-        <temperature-control class="mt-8"></temperature-control>
+        <temperature-control @update-units="updateUnits" class="mt-8"/>
       </section>
       <section class="wrapper-display">
         <weather-display></weather-display>
@@ -42,6 +42,9 @@ export default {
     city() {
       this.loadData();
     },
+    units() {
+      this.loadData();
+    },
   },
   beforeMount() {
     this.loadData();
@@ -51,6 +54,9 @@ export default {
 
     searchCity(city) {
       this.city = city;
+    },
+    updateUnits(units) {
+      this.units = units === 'C' ? 'metric' : 'imperial';
     },
     loadData() {
       this.fetchWeatherData({

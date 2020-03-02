@@ -47,7 +47,7 @@ export default {
     },
   },
   data: () => ({
-    showCity: false,
+    showCity: true,
     searchingCity: '',
   }),
   methods: {

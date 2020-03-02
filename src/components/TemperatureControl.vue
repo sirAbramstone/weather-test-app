@@ -1,6 +1,9 @@
 <template>
   <div class="temperature-control">
-    <toggle-switch :options="options"></toggle-switch>
+    <toggle-switch
+      :options="options"
+      @change="$emit('update-units', $event.value)"
+    />
   </div>
 </template>
 
