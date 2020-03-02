@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 import CityWidget from '@/components/CityWidget.vue';
 import TemperatureControl from '@/components/TemperatureControl.vue';
 import WeatherDisplay from '@/components/WeatherDisplay.vue';
@@ -28,6 +30,18 @@ export default {
     TemperatureControl,
     WeatherDisplay,
     WeatherDetails,
+  },
+  computed: {
+    ...mapState({ weather: (state) => state.weather }),
+  },
+  methods: {
+    ...mapActions(['fetchWeatherData']),
+  },
+  beforeMount() {
+    this.fetchWeatherData({
+      city: 'London',
+      units: 'metric',
+    });
   },
 };
 </script>

@@ -14,7 +14,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async fetchWeather({ commit }, payload) {
+    async fetchWeatherData({ commit }, payload) {
       const { city, units } = payload;
 
       await api.getWeather(city, units)
@@ -22,7 +22,7 @@ export default new Vuex.Store({
           commit('setWeather', data);
         })
         .catch((e) => {
-          console.error(e);
+          console.error(e.message);
         });
     },
   },
