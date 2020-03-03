@@ -6,7 +6,10 @@
         <temperature-control @update-units="updateUnits" class="mt-8"/>
       </section>
       <section class="wrapper-display">
-        <weather-display :temp="temp" :descr="descr">
+        <p v-if="hasError" class="error">
+          Произошла ошибка при получении данных. Повторите запрос.
+        </p>
+        <weather-display v-else :temp="temp" :descr="descr">
           <template v-slot:icon>
             <SunnyIcon></SunnyIcon>
           </template>
@@ -25,7 +28,12 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from 'vuex';
+import {
+  mapState,
+  mapGetters,
+  mapMutations,
+  mapActions,
+} from 'vuex';
 
 import CityWidget from '@/components/CityWidget.vue';
 import TemperatureControl from '@/components/TemperatureControl.vue';
@@ -49,6 +57,8 @@ export default {
     isLoading: false,
   }),
   computed: {
+    ...mapState({ hasError: (state) => state.hasError }),
+
     ...mapGetters([
       'city',
       'temp',
@@ -134,5 +144,11 @@ export default {
 
   .wrapper-details {
     padding: 0 28px 120px 28px;
+  }
+
+  .error {
+    padding: 56px 0;
+    font-size: 2.5em;
+    text-align: center;
   }
 </style>

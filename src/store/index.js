@@ -9,6 +9,7 @@ export default new Vuex.Store({
     weatherData: {
       name: 'Москва',
     },
+    hasError: false,
   },
   getters: {
     city: (state) => state.weatherData.name,
@@ -21,10 +22,15 @@ export default new Vuex.Store({
   },
   mutations: {
     setWeather(state, weather) {
+      state.hasError = false;
       state.weatherData = weather;
     },
     setCity(state, city) {
       Vue.set(state.weatherData, 'name', city);
+    },
+    setError(state) {
+      state.hasError = true;
+      state.weatherData.name = 'Город не найден';
     },
   },
   actions: {
@@ -33,10 +39,15 @@ export default new Vuex.Store({
 
       await api.getWeatherByCity(city, units)
         .then((data) => {
-          commit('setWeather', data);
+          if (data.cod === 200) {
+            commit('setWeather', data);
+          } else {
+            commit('setError');
+          }
         })
         .catch((e) => {
           console.error(e.message);
+          commit('setError');
         });
     },
     async fetchWeatherDataByCoords({ commit }, payload) {
@@ -44,10 +55,15 @@ export default new Vuex.Store({
 
       await api.getWeatherByCoords(coords, units)
         .then((data) => {
-          commit('setWeather', data);
+          if (data.cod === 200) {
+            commit('setWeather', data);
+          } else {
+            commit('setError');
+          }
         })
         .catch((e) => {
           console.error(e.message);
+          commit('setError');
         });
     },
   },
