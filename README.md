@@ -1,4 +1,4 @@
-# ronas-test
+# weather test app
 
 ## Project setup
 ```
