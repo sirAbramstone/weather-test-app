@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapMutations, mapActions } from 'vuex';
 
 import CityWidget from '@/components/CityWidget.vue';
 import TemperatureControl from '@/components/TemperatureControl.vue';
@@ -44,12 +44,12 @@ export default {
     SunnyIcon,
   },
   data: () => ({
-    city: 'Омск',
     units: 'metric',
     coords: [],
   }),
   computed: {
     ...mapGetters([
+      'city',
       'temp',
       'pressure',
       'humidity',
@@ -59,9 +59,6 @@ export default {
     ]),
   },
   watch: {
-    city() {
-      this.loadData();
-    },
     units() {
       this.loadData();
     },
@@ -76,10 +73,13 @@ export default {
     this.loadData();
   },
   methods: {
+    ...mapMutations(['setCity']),
+
     ...mapActions(['fetchWeatherDataByCity', 'fetchWeatherDataByCoords']),
 
     searchCity(city) {
-      this.city = city;
+      this.setCity(city);
+      this.loadData();
     },
     updateUnits(units) {
       this.units = units === 'C' ? 'metric' : 'imperial';

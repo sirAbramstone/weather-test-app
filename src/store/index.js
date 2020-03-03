@@ -6,9 +6,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    weatherData: {},
+    weatherData: {
+      name: 'Москва',
+    },
   },
   getters: {
+    city: (state) => state.weatherData.name,
     temp: (state) => state.weatherData.main?.temp && Math.round(state.weatherData.main.temp),
     pressure: (state) => state.weatherData.main?.pressure,
     humidity: (state) => state.weatherData.main?.humidity,
@@ -19,6 +22,9 @@ export default new Vuex.Store({
   mutations: {
     setWeather(state, weather) {
       state.weatherData = weather;
+    },
+    setCity(state, city) {
+      Vue.set(state.weatherData, 'name', city);
     },
   },
   actions: {
