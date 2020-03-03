@@ -20,6 +20,7 @@ export default {
     descr: {
       type: String,
       required: true,
+      default: '',
     },
   },
 };

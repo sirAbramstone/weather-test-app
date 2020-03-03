@@ -1,20 +1,20 @@
-<template>
+<template functional>
   <div class="weather-details">
   <div class="weather-details__param">
     <span class="weather-details__param-name">Ветер</span>
-    <span class="weather-details__param-value">5 м/с, западный</span>
+    <span class="weather-details__param-value">{{ props.windSpeed }} м/с, западный</span>
   </div
   ><div class="weather-details__param">
     <span class="weather-details__param-name">Давление</span>
-    <span class="weather-details__param-value">752 мм рт. ст.</span>
+    <span class="weather-details__param-value">{{ props.pressure }} мм рт. ст.</span>
   </div>
     <div class="weather-details__param">
     <span class="weather-details__param-name">Влажность</span>
-    <span class="weather-details__param-value">60%</span>
+    <span class="weather-details__param-value">{{ props.humidity }}%</span>
   </div>
     <div class="weather-details__param">
     <span class="weather-details__param-name">Вероятность дождя</span>
-    <span class="weather-details__param-value">10%</span>
+    <span class="weather-details__param-value">{{ props.chanceOfRain }}%</span>
   </div>
   </div>
 </template>
@@ -22,6 +22,24 @@
 <script>
 export default {
   name: 'WeatherDetails',
+  props: {
+    windSpeed: {
+      type: Number,
+      default: 0,
+    },
+    pressure: {
+      type: Number,
+      default: 0,
+    },
+    humidity: {
+      type: Number,
+      default: 0,
+    },
+    chanceOfRain: {
+      type: Number,
+      default: 0,
+    },
+  },
 };
 </script>
 

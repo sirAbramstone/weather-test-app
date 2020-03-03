@@ -2,14 +2,19 @@
   <main class="home">
     <div class="container">
       <section class="wrapper-controls">
-        <city-widget :city="city" @search-city="searchCity"></city-widget>
+        <city-widget :city="city" @search-city="searchCity"/>
         <temperature-control @update-units="updateUnits" class="mt-8"/>
       </section>
       <section class="wrapper-display">
-        <weather-display :temp="temp" :descr="descr"></weather-display>
+        <weather-display :temp="temp" :descr="descr"/>
       </section>
       <section class="wrapper-details">
-        <weather-details></weather-details>
+        <weather-details
+          :windSpeed="windSpeed"
+          :pressure="pressure"
+          :humidity="humidity"
+          :chanceOfRain="chanceOfRain"
+        />
       </section>
     </div>
   </main>

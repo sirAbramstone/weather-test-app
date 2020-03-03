@@ -21,6 +21,7 @@
       <input
         @keyup.enter="search"
         v-model="searchingCity"
+        ref="search"
         type="text"
         class="city-widget__search-field"
       >
@@ -50,6 +51,15 @@ export default {
     showCity: true,
     searchingCity: '',
   }),
+  watch: {
+    showCity(val) {
+      if (!val) {
+        this.$nextTick(function () {
+          this.$refs.search.focus();
+        });
+      }
+    },
+  },
   methods: {
     toggleCityVisible() {
       this.showCity = !this.showCity;
