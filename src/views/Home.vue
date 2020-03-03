@@ -46,6 +46,7 @@ export default {
   data: () => ({
     units: 'metric',
     coords: [],
+    isLoading: false,
   }),
   computed: {
     ...mapGetters([
@@ -62,11 +63,17 @@ export default {
     units() {
       this.loadData();
     },
-    coords() {
-      this.fetchWeatherDataByCoords({
+    async coords() {
+      if (this.isLoading) {
+        return;
+      }
+
+      this.isLoading = true;
+      await this.fetchWeatherDataByCoords({
         coords: this.coords,
         units: this.units,
       });
+      this.isLoading = false;
     },
   },
   beforeMount() {
@@ -93,11 +100,17 @@ export default {
       const { latitude, longitude } = position.coords;
       this.coords = [latitude, longitude];
     },
-    loadData() {
-      this.fetchWeatherDataByCity({
+    async loadData() {
+      if (this.isLoading) {
+        return;
+      }
+
+      this.isLoading = true;
+      await this.fetchWeatherDataByCity({
         city: this.city,
         units: this.units,
       });
+      this.isLoading = false;
     },
   },
 };

@@ -110,6 +110,7 @@ export default {
       box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
       font-size: 1.66666666667em;
       line-height: 1.2;
+      text-transform: capitalize;
     }
 
     &__search-button {
