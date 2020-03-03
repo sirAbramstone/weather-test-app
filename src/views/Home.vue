@@ -2,7 +2,7 @@
   <main class="home">
     <div class="container">
       <section class="wrapper-controls">
-        <city-widget :city="city" @search-city="searchCity"/>
+        <city-widget :city="city" @get-location='getLocation' @search-city="searchCity"/>
         <temperature-control @update-units="updateUnits" class="mt-8"/>
       </section>
       <section class="wrapper-display">
@@ -46,6 +46,7 @@ export default {
   data: () => ({
     city: 'Омск',
     units: 'metric',
+    coords: [],
   }),
   computed: {
     ...mapGetters([
@@ -64,12 +65,18 @@ export default {
     units() {
       this.loadData();
     },
+    coords() {
+      this.fetchWeatherDataByCoords({
+        coords: this.coords,
+        units: this.units,
+      });
+    },
   },
   beforeMount() {
     this.loadData();
   },
   methods: {
-    ...mapActions(['fetchWeatherData']),
+    ...mapActions(['fetchWeatherDataByCity', 'fetchWeatherDataByCoords']),
 
     searchCity(city) {
       this.city = city;
@@ -77,8 +84,17 @@ export default {
     updateUnits(units) {
       this.units = units === 'C' ? 'metric' : 'imperial';
     },
+    getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.setPosition);
+      }
+    },
+    setPosition(position) {
+      const { latitude, longitude } = position.coords;
+      this.coords = [latitude, longitude];
+    },
     loadData() {
-      this.fetchWeatherData({
+      this.fetchWeatherDataByCity({
         city: this.city,
         units: this.units,
       });

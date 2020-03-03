@@ -36,6 +36,7 @@ export default {
 
     &__main {
       display: flex;
+      justify-content: center;
     }
 
     &__temp {

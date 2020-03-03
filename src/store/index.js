@@ -22,10 +22,21 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async fetchWeatherData({ commit }, payload) {
+    async fetchWeatherDataByCity({ commit }, payload) {
       const { city, units } = payload;
 
-      await api.getWeather(city, units)
+      await api.getWeatherByCity(city, units)
+        .then((data) => {
+          commit('setWeather', data);
+        })
+        .catch((e) => {
+          console.error(e.message);
+        });
+    },
+    async fetchWeatherDataByCoords({ commit }, payload) {
+      const { coords, units } = payload;
+
+      await api.getWeatherByCoords(coords, units)
         .then((data) => {
           commit('setWeather', data);
         })

@@ -4,7 +4,7 @@
       <h2 class="city-widget__city">{{ city }}</h2>
       <div class="city-widget__controls">
         <base-button @click="toggleCityVisible">Сменить город</base-button>
-        <base-button>
+        <base-button @click="$emit('get-location')">
           <div class="icon">
             <svg width="19" height="23" viewBox="0 0 19 23" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd"
