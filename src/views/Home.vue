@@ -13,6 +13,9 @@
           <template v-slot:icon>
             <SunnyIcon></SunnyIcon>
           </template>
+          <template v-slot:loader>
+            <base-preloader v-if="isLoading"/>
+          </template>
         </weather-display>
       </section>
       <section class="wrapper-details">
@@ -39,6 +42,7 @@ import CityWidget from '@/components/CityWidget.vue';
 import TemperatureControl from '@/components/TemperatureControl.vue';
 import WeatherDisplay from '@/components/WeatherDisplay.vue';
 import WeatherDetails from '@/components/WeatherDetails.vue';
+import BasePreloader from '@/components/BasePreloader.vue';
 
 import SunnyIcon from '@/assets/images/sunny.svg';
 
@@ -49,6 +53,7 @@ export default {
     TemperatureControl,
     WeatherDisplay,
     WeatherDetails,
+    BasePreloader,
     SunnyIcon,
   },
   data: () => ({

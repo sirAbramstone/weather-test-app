@@ -3,7 +3,9 @@
     <div class="weather-display__main">
       <slot name="icon"></slot>
       <h1 class="weather-display__temp">
-        <span>{{ props.temp }}</span>
+        <slot name="loader">
+          <span>{{ props.temp }}</span>
+        </slot>
         <span class="degree">o</span>
       </h1>
     </div>
