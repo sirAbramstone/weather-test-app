@@ -6,7 +6,11 @@
         <temperature-control @update-units="updateUnits" class="mt-8"/>
       </section>
       <section class="wrapper-display">
-        <weather-display :temp="temp" :descr="descr"/>
+        <weather-display :temp="temp" :descr="descr">
+          <template v-slot:icon>
+            <SunnyIcon></SunnyIcon>
+          </template>
+        </weather-display>
       </section>
       <section class="wrapper-details">
         <weather-details
@@ -28,6 +32,8 @@ import TemperatureControl from '@/components/TemperatureControl.vue';
 import WeatherDisplay from '@/components/WeatherDisplay.vue';
 import WeatherDetails from '@/components/WeatherDetails.vue';
 
+import SunnyIcon from '@/assets/images/sunny.svg';
+
 export default {
   name: 'Home',
   components: {
@@ -35,6 +41,7 @@ export default {
     TemperatureControl,
     WeatherDisplay,
     WeatherDetails,
+    SunnyIcon,
   },
   data: () => ({
     city: 'Омск',

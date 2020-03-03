@@ -3,7 +3,7 @@ import App from './App.vue';
 import store from './store';
 
 // Styles assets
-import './assets/main.css';
+import './assets/styles/main.css';
 import '../node_modules/modern-css-reset/dist/reset.min.css';
 
 Vue.config.productionTip = false;

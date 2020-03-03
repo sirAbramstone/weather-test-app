@@ -1,9 +1,12 @@
 <template functional>
   <div class="weather-display">
-    <h1 class="weather-display__temp">
-      <span>{{ props.temp }}</span>
-      <span class="degree">°</span>
-    </h1>
+    <div class="weather-display__main">
+      <slot name="icon"></slot>
+      <h1 class="weather-display__temp">
+        <span>{{ props.temp }}</span>
+        <span class="degree">o</span>
+      </h1>
+    </div>
     <p class="weather-display__desc">{{ props.descr }}</p>
   </div>
 </template>
@@ -31,12 +34,19 @@ export default {
     text-align: center;
     line-height: 1.2;
 
+    &__main {
+      display: flex;
+    }
+
     &__temp {
       font-size: 10em;
     }
 
     & .degree {
-      font-size: 0.5em;
+      position: relative;
+      top: -32px;
+      right: -12px;
+      font-size: 0.55em;
       vertical-align: super;
     }
 
