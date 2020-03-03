@@ -1,16 +1,27 @@
-<template>
+<template functional>
   <div class="weather-display">
     <h1 class="weather-display__temp">
-      <span>19</span>
+      <span>{{ props.temp }}</span>
       <span class="degree">°</span>
     </h1>
-    <p class="weather-display__desc">Преимущественно солнечно</p>
+    <p class="weather-display__desc">{{ props.descr }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'WeatherDisplay',
+  props: {
+    temp: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    descr: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 

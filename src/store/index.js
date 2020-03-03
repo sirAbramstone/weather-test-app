@@ -9,11 +9,11 @@ export default new Vuex.Store({
     weatherData: {},
   },
   getters: {
-    temp: (state) => state.weatherData.main?.temp,
+    temp: (state) => state.weatherData.main?.temp && Math.round(state.weatherData.main.temp),
     pressure: (state) => state.weatherData.main?.pressure,
     humidity: (state) => state.weatherData.main?.humidity,
     descr: (state) => state.weatherData.weather[0]?.description,
-    windSpeed: (state) => state.weatherData.wind?.speed,
+    windSpeed: (state) => state.weatherData.wind?.speed && Math.round(state.weatherData.wind.speed),
     chanceOfRain: (state) => state.weatherData.clouds?.all,
   },
   mutations: {

@@ -6,7 +6,7 @@
         <temperature-control @update-units="updateUnits" class="mt-8"/>
       </section>
       <section class="wrapper-display">
-        <weather-display></weather-display>
+        <weather-display :temp="temp" :descr="descr"></weather-display>
       </section>
       <section class="wrapper-details">
         <weather-details></weather-details>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 import CityWidget from '@/components/CityWidget.vue';
 import TemperatureControl from '@/components/TemperatureControl.vue';
@@ -36,7 +36,14 @@ export default {
     units: 'metric',
   }),
   computed: {
-    ...mapState({ weather: (state) => state.weatherData }),
+    ...mapGetters([
+      'temp',
+      'pressure',
+      'humidity',
+      'descr',
+      'windSpeed',
+      'chanceOfRain',
+    ]),
   },
   watch: {
     city() {
