@@ -45,8 +45,7 @@ export default new Vuex.Store({
             commit('setError');
           }
         })
-        .catch((e) => {
-          console.error(e.message);
+        .catch(() => {
           commit('setError');
         });
     },
@@ -61,8 +60,7 @@ export default new Vuex.Store({
             commit('setError');
           }
         })
-        .catch((e) => {
-          console.error(e.message);
+        .catch(() => {
           commit('setError');
         });
     },
